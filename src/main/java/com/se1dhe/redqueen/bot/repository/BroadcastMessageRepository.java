@@ -1,0 +1,14 @@
+package com.se1dhe.redqueen.bot.repository;
+
+import com.se1dhe.redqueen.bot.model.BroadcastMessage;
+import com.se1dhe.redqueen.bot.model.Word;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface BroadcastMessageRepository extends JpaRepository<BroadcastMessage, Integer> {
+
+    List<BroadcastMessage> findBySend(boolean send);
+}
