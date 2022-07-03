@@ -58,7 +58,7 @@ public class ScheduleManager {
         SendMessage sendMessage = new SendMessage();
         sendMessage.enableMarkdownV2(true);
         sendMessage.setText("`Пора отращивать песюны!`");
-        sendMessage.setChatId("-1001792394355");
+        sendMessage.setChatId(Config.GROUP_ID);
         bot.execute(sendMessage);
         List<DbUser> dbUserList = dbUserService.findAll();
         for (DbUser dbUser : dbUserList) {

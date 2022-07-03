@@ -17,6 +17,7 @@ public class Config {
     public static String BOT_NAME;
     public static String BOT_TOKEN;
     public static String BOT_LANGUAGE;
+    public static String GROUP_ID;
     public static String DB_URL;
     public static String DB_USER;
     public static String DB_PWD;
@@ -47,6 +48,7 @@ public class Config {
         BOT_NAME = botSettings.getProperty("bot.name", "cryptootest_bot:");
         BOT_TOKEN = botSettings.getProperty("bot.token", "644918045:AAEmu88-rJ4iSGBNstThz_bx1VNR8qqjELE");
         BOT_LANGUAGE = botSettings.getProperty("bot.language", "ru");
+        GROUP_ID = botSettings.getProperty("bot.groupId", "-1001792394355");
 
         DB_URL = botDBSettings.getProperty("bot.url", "jdbc:mysql://127.0.0.1:3306/redQueen?useUnicode=true&character_set_server=utf8mb4&autoReconnect=true&interactiveClient=true&serverTimezone=Europe/Kiev&useSSL=false");
         DB_USER = botDBSettings.getProperty("bot.username", "root");
