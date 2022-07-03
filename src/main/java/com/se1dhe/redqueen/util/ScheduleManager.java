@@ -2,19 +2,22 @@ package com.se1dhe.redqueen.util;
 
 
 import com.se1dhe.redqueen.RedQueenApplication;
-import com.se1dhe.redqueen.bot.core.util.BotUtil;
 import com.se1dhe.redqueen.bot.model.BroadcastMessage;
 import com.se1dhe.redqueen.bot.model.DbUser;
 import com.se1dhe.redqueen.bot.service.BroadcastMessageService;
 import com.se1dhe.redqueen.bot.service.DbUserService;
+import com.se1dhe.redqueen.util.anekdotRu.AnekdotParser;
 import com.se1dhe.redqueen.util.bashOrg.BashOrgParser;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.bots.AbsSender;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -74,12 +77,25 @@ public class ScheduleManager {
     public void sendQuote() throws TelegramApiException, IOException {
         getQuote(RedQueenApplication.telegramBot);
     }
+    @Scheduled(initialDelay = 3000, fixedDelay = 1800000)
+    public void sendPicture() throws TelegramApiException, IOException {
+        getPicture(RedQueenApplication.telegramBot);
+    }
 
     public void getQuote(AbsSender bot) throws TelegramApiException, IOException {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setText(BashOrgParser.getQuote());
         sendMessage.setChatId(Config.GROUP_ID);
         bot.execute(sendMessage);
+    }
+
+    public void getPicture(AbsSender bot) throws TelegramApiException, IOException {
+        InputFile inputFile = new InputFile();
+        inputFile.setMedia(AnekdotParser.getPicture());
+        SendPhoto sendPhoto = new SendPhoto();
+        sendPhoto.setPhoto(inputFile);
+        sendPhoto.setChatId(Config.GROUP_ID);
+        bot.execute(sendPhoto);
     }
 
 }
