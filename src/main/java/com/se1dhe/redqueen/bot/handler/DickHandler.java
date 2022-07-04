@@ -65,7 +65,7 @@ public class DickHandler implements IGroupMessageHandler {
                 BotUtil.sendMessage(bot, message, userName + ", твой писюн уменьшился на "+ String.valueOf(size).replace("-","") +" см\uD83D\uDC4E\uD83C\uDFFF\n" +
                         "Теперь его длинна: " + user.getPenisSize() + " см.\nПродолжай отращивать после полуночи.", true, false, null);
             }
-
+            return false;
         }
 
         if (messageText.equalsIgnoreCase("/top")) {
@@ -87,6 +87,7 @@ public class DickHandler implements IGroupMessageHandler {
             }
 
             BotUtil.sendHtmlMessage(bot, message, sb.toString(), true,  null);
+            return false;
 
         }
 

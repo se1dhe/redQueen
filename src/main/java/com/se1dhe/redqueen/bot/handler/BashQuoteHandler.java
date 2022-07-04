@@ -10,7 +10,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.IOException;
 
-public class BashQuote implements IGroupMessageHandler {
+public class BashQuoteHandler implements IGroupMessageHandler {
 
     @Override
     public boolean onGroupMessage(AbstractTelegramBot bot, Update update, Message message) throws TelegramApiException, IOException {
