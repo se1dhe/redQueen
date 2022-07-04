@@ -2,6 +2,7 @@ package com.se1dhe.redqueen.util;
 
 
 import com.se1dhe.redqueen.RedQueenApplication;
+import com.se1dhe.redqueen.bot.core.AbstractTelegramBot;
 import com.se1dhe.redqueen.bot.model.BroadcastMessage;
 import com.se1dhe.redqueen.bot.model.DbUser;
 import com.se1dhe.redqueen.bot.service.BroadcastMessageService;
@@ -89,13 +90,13 @@ public class ScheduleManager {
         bot.execute(sendMessage);
     }
 
-    public void getPicture(AbsSender bot) throws TelegramApiException, IOException {
-        InputFile inputFile = new InputFile();
-        inputFile.setMedia(AnekdotParser.getPicture());
+    public void getPicture(AbstractTelegramBot bot) throws TelegramApiException, IOException {
+        AnekdotParser.download();
         SendPhoto sendPhoto = new SendPhoto();
-        sendPhoto.setPhoto(inputFile);
+        sendPhoto.setPhoto(new InputFile((new File("./img/picture.jpg"))));
         sendPhoto.setChatId(Config.GROUP_ID);
         bot.execute(sendPhoto);
     }
+
 
 }
