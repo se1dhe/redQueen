@@ -59,7 +59,8 @@ public class RedQueenApplication {
         telegramBot.addHandler(new ReputationHandler(dbUserService));
         telegramBot.addHandler(new BroadcastMessageHandler(dbUserService, broadcastMessageService));
         telegramBot.addHandler(new DickHandler(dbUserService));
-        telegramBot.addHandler(new BashQuote());
+        telegramBot.addHandler(new BashQuoteHandler());
+        telegramBot.addHandler(new MemHandler());
 
 
     }
